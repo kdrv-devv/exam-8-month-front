@@ -2,7 +2,7 @@ import axios from "axios";
 
 interface AxiosType {
   url: string;
-  method?: "GET" | "POST" | "DELETE" | "PUT";
+  method?: "GET" | "POST" | "DELETE" | "PUT" | "PATCH"
   params?: object;
   headers?: object;
   body?: object;

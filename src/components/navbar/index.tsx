@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import navbarlogo from "../../img/navbar-logo.png";
 import { FaInstagram } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -11,6 +11,9 @@ import { useSelector } from "react-redux";
 import { RootStore } from "../../redux/store";
 
 const Navbar = () => {
+
+
+  const navigate = useNavigate()
   const [openbars, setOpenBars] = useState(false);
   let link_style =
     "font-normal text-[24px] leading-[171%]h5 text-[#ffff] border-b w-full";
@@ -33,7 +36,7 @@ const Navbar = () => {
             />
           </Link>
           <div className=" flex  flex-col  max-[840px]:hidden  ">
-            <h4 className="font-normal text-4 text-3  text-[#fff]">Ташкент</h4>
+            <h4  className="font-normal text-4 text-3  text-[#fff]">Ташкент</h4>
             <a href="#" className="font-light text-2 opacity-50 text-[#fff] ">
               Парк Magic City, <br />
               ул. Бабура, 174
@@ -133,7 +136,7 @@ const Navbar = () => {
 
           <div className="flex flex-col gap-5 items-start w-full">
             <h5 className={link_style}>Афиша</h5>
-            <h5 className={link_style}>Сеансы</h5>
+              <p onClick={()=> navigate("/seans")} className={link_style}>Сеансы</p>
             <h5 className={link_style}>Скоро в кино</h5>
             <h5 className={link_style}>Кинотеатр</h5>
             <h5 className={link_style}>Контакты</h5>
@@ -141,7 +144,7 @@ const Navbar = () => {
             <button className="w-full text-white text-xl h-10 rounded-2xl bg-[#00bfa5]">
               Войти
             </button>
-            <button className="w-full text-white text-xl h-10 rounded-2xl bg-[#00bfa5]">
+            <button  className="w-full text-white text-xl h-10 rounded-2xl bg-[#00bfa5]">
               Написать отзыв
             </button>
           </div>

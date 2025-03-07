@@ -39,4 +39,6 @@ const SoonMovieCard = ({ value }: MovieCardProps) => {
   );
 };
 
+
+
 export default SoonMovieCard;

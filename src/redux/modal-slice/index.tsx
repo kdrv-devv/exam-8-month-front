@@ -8,6 +8,8 @@ interface ModalAuthorizationType {
 
 interface InitialStateType {
   authorizationModalVisiblty: ModalAuthorizationType;
+  chiptamodal:boolean
+  chiptaId:any
 }
 
 const initialState: InitialStateType = {
@@ -16,6 +18,9 @@ const initialState: InitialStateType = {
     isLoading: false,
     reglogotp :"register"
   },
+  chiptamodal:false,
+  chiptaId :null
+
 };
 const modalSlice = createSlice({
   initialState,
@@ -26,9 +31,13 @@ const modalSlice = createSlice({
     },
     setRegLogOtp(state , {payload}){
       state.authorizationModalVisiblty.reglogotp = payload
+    },
+    setChiptaModal(state , {payload}){
+      state.chiptamodal = payload.modal,
+      state.chiptaId = payload.id
     }
   },
 });
 
-export const { setAuthorizationModalVisiblty,setRegLogOtp } = modalSlice.actions;
+export const { setAuthorizationModalVisiblty,setRegLogOtp  , setChiptaModal} = modalSlice.actions;
 export default modalSlice.reducer;

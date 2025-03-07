@@ -8,6 +8,7 @@ import MovieCard from "../../components/movie-card";
 import Footer from "../../components/footer";
 import Modals from "../../components/modals";
 import { MovieTicketData } from "../../@types";
+import TicketModal from "../../components/modals/ticket-modal";
 
 const Home = () => {
   let btn_style =
@@ -72,6 +73,7 @@ const Home = () => {
 
         <Modals/>
       <SoonMovie />
+      <TicketModal/>
       <Footer />
     </div>
   );

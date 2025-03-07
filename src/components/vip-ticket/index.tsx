@@ -1,14 +1,22 @@
 
 import premium from "../../img/premium.svg";
 import type { MovieTicketData } from "../../@types";
+import { useDispatch } from "react-redux";
+import { setChiptaModal } from "../../redux/modal-slice";
 
 interface MovieCardProps {
   val: MovieTicketData;  // Prop sifatida obyektni olamiz
 }
 const VipTicket = ({val}:MovieCardProps) => {
+
+  const dispatch = useDispatch()
+  
+ 
+
+
   return (
-    <div className="flex flex-col gap-3 ">
-    <div className="flex items-center w-[120px] h-[50px] border-2 border-[#00bfa5] rounded ">
+    <div className="flex flex-col gap-3  ">
+    <div onClick={()=> {dispatch(setChiptaModal({modal:true , id:val._id}))}} className="flex items-center cursor-pointer w-[120px] h-[50px] border-2 border-[#00bfa5] rounded ">
       <div className="w-[75%] border-r-[#00bfa5]">
         <div className="flex items-center  justify-center bg-[#00bfa5] w-[100%] h-[25px] text-[13px] rounded-tl rounded-tr-none rounded-br-none rounded-bl-none">
           <h5 className="text-white">{val.availableTime}</h5>

@@ -33,6 +33,16 @@ const notifications = (type: string) => {
         message: "Login failed. Please try again later.",
       });
       break;
+      case "chiptaolindi":
+        return notification.success({
+          message: "Chipta sotib olindi ",
+        });
+
+        case "err-chiptaolindi":
+          return notification.error({
+            message: "Afsuski Chipta sotib olinmadi  ",
+          });
+        break;
 
     default:
       break;
