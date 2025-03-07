@@ -5,7 +5,7 @@ import { AtSign, Lock } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { setAuthorizationModalVisiblty } from "../../../redux/modal-slice";
 import { setStore } from "../../../localStorage";
-import { setIsverify } from "../../../redux/verify-slice";
+import { setIsverify, setUserData } from "../../../redux/verify-slice";
 
 interface UserData {
   name: string;
@@ -25,14 +25,14 @@ const LoginModal = () => {
       body: data,
     })
       .then((data) => {
-
         notifications("login"),
           dispatch(
             setAuthorizationModalVisiblty({ open: false, isLoading: false })
           ),
-          setStore("token", data?.data?.data?.token);
-          setStore("user", data?.data?.data);
-          dispatch(setIsverify(true))
+          setStore("token", data?.data?.data?.token); // tokenni localga save qilish
+        dispatch(setIsverify(true)); // login qilganmi yo'qmim shuni bilish uchun
+        dispatch(setUserData(data?.data?.data)); // reduxga saqlayapman user datasini
+        console.log(data?.data?.data);
       })
       .catch(() => {
         notifications("error-login");

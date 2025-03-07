@@ -1,17 +1,34 @@
-// import { useEffect } from "react"
-// import { useAxios } from "../../hooks/useAxios"
+import { useEffect, useState } from "react"
+import { useAxios } from "../../hooks/useAxios"
 
 import SoonMovie from "../../components/home-components/soon-movie";
 import Navbar from "../../components/navbar";
 import Showcase from "../../components/showcase";
 import MovieCard from "../../components/movie-card";
 import Footer from "../../components/footer";
-import AuthModal from "../../components/modals/register-modal";
 import Modals from "../../components/modals";
+import { MovieTicketData } from "../../@types";
 
 const Home = () => {
   let btn_style =
     " h-8 flex items-center justify-center rounded-xl font-normal text-sm leading-[143%] text-center ";
+  const axios = useAxios()
+  const [movies , setMovies] = useState([]) 
+  useEffect(()=>{
+    let token = localStorage.getItem("token")
+
+    axios({
+      url:"/admin/get-movies",
+      method:"GET",
+      headers:{
+        "Authorization": `Bearer ${token}`,
+      }
+
+    }).then((data) => setMovies(data.data?.data))
+
+
+  },[])
+
 
   return (
     <div>
@@ -47,8 +64,8 @@ const Home = () => {
 
       <div className="container w-[90%] m-auto">
         <div className="grid gap-10 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, idx: number) => {
-            return <MovieCard key={idx} />;
+          {movies.map((val :MovieTicketData) => {
+            return <MovieCard key={val._id} value={val} />;
           })}
         </div>
       </div>

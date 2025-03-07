@@ -1,19 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
+interface userBig{
+    token:string
+    user:User 
+}
 
 interface InitialStateType{
     isverify:boolean
-    userData:object[]
+    userData?:userBig | null
 }
+
+interface User {
+    _id: string;
+    name: string;
+    email: string;
+    password: string;
+    phonenumber: string;
+    role: "user" | "admin"; // Agar faqat shu ikkita rol bo'lsa
+  }
 
 
 const initialState :InitialStateType ={
-    isverify :false,
-    userData:[]
+    isverify : localStorage.getItem("token") ? true :false,
+    userData:null
 }
-
-
 
 const verifySlice = createSlice({
     initialState,

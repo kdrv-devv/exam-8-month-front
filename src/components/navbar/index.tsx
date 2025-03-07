@@ -54,9 +54,15 @@ const Navbar = () => {
         </div>
         <div className="header-right flex items-center  gap-4 ">
           <div className="hidden max-[780px]:flex gap-4">
-            <button className="hidden max-[780px]:flex text-[29px] text-[#33c558]">
-              <FaRegUserCircle />
-            </button>
+            {isverify.isverify ? (
+              <button className="w-[30px]  h-[30px] bg-slate-300 rounded-full flex items-center justify-center text-black">
+                {isverify.userData?.user.name.slice(0, 1)}
+              </button>
+            ) : (
+              <button className="hidden max-[780px]:flex text-[29px] text-[#33c558]">
+                <FaRegUserCircle />
+              </button>
+            )}
             <button
               onClick={() => {
                 setOpenBars(true);
@@ -73,7 +79,13 @@ const Navbar = () => {
           <button className="w-[194px] max-[780px]:hidden h-8 rounded-[40px]  bg-[#00bfa5] flex items-center justify-center text-[#fff] font-normal text-4 p-2">
             Мне не пришёл билет
           </button>
-          {isverify.isverify ? <button className="">user</button> : ""}
+          {isverify.isverify ? (
+            <button className="w-[30px] max-[780px]:hidden h-[30px] bg-slate-300 rounded-full flex items-center justify-center text-black">
+              {isverify.userData?.user.name.slice(0, 1)}
+            </button>
+          ) : (
+            ""
+          )}
         </div>
 
         <div

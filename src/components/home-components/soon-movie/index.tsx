@@ -1,8 +1,30 @@
 import { Link } from "react-router-dom";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import SoonMovieCard from "../../soon-movie-card";
+import { useAxios } from "../../../hooks/useAxios";
+import { useEffect, useState } from "react";
+import { MovieTicketData } from "../../../@types";
 
 const SoonMovie = () => {
+
+    const axios = useAxios()
+    const [movies , setMovies] = useState([]) 
+    useEffect(()=>{
+      let token = localStorage.getItem("token")
+  
+      axios({
+        url:"/admin/get-movies",
+        method:"GET",
+        headers:{
+          "Authorization": `Bearer ${token}`,
+        }
+  
+      }).then((data) => setMovies(data.data?.data))
+    },[])
+
+
+
+
   return (
     <section className="bg-[#f8f8f8] pb-10 ">
       <div className="container w-[90%] m-auto pt-4 mt-8">
@@ -19,9 +41,10 @@ const SoonMovie = () => {
         </div>
 
         <div className="grid grid-cols-6 gap-[20px] max-[499px]:grid-cols-1  max-[700px]:grid-cols-2  max-[1000px]:grid-cols-3  max-[1200px]:grid-cols-6  max-[1300px]:grid-cols-4">
-          {Array.from({ length: 2 }).map((_, idx) => (
-            <SoonMovieCard key={idx} />
-          ))}
+
+           {movies.map((val :MovieTicketData) => {
+            return <SoonMovieCard key={val._id} value={val} />;
+          })}
         </div>
       </div>
     </section>
