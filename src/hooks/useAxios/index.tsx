@@ -11,12 +11,12 @@ interface AxiosType {
 export const useAxios = () => {
   const response = ({ method, url, params, headers, body }: AxiosType) => {
     return axios({
-      url:`http://localhost:7070${url}`,
+      url:`https://ticket-sale-magic.onrender.com${url}`,
       method,
       params: {
         ...params,
       },
-      headers: {
+      headers:{
         "Content-Type": "application/json",
         ...headers,
       },

@@ -4,8 +4,12 @@ import SoonMovieCard from "../../soon-movie-card";
 import { useAxios } from "../../../hooks/useAxios";
 import { useEffect, useState } from "react";
 import { MovieTicketData } from "../../../@types";
+import useLoader from "../../../generic/useLoader";
 
 const SoonMovie = () => {
+
+
+    const [loading , setLading] = useState<Boolean>(true)
 
     const axios = useAxios()
     const [movies , setMovies] = useState([]) 
@@ -19,10 +23,10 @@ const SoonMovie = () => {
           "Authorization": `Bearer ${token}`,
         }
   
-      }).then((data) => setMovies(data.data?.data))
+      }).then((data) => {setMovies(data.data?.data) , setLading(false)})
     },[])
 
-
+    const {homeLoader} = useLoader()
 
 
   return (
@@ -42,7 +46,7 @@ const SoonMovie = () => {
 
         <div className="grid grid-cols-6 gap-[20px] max-[499px]:grid-cols-1  max-[700px]:grid-cols-2  max-[1000px]:grid-cols-3  max-[1200px]:grid-cols-6  max-[1300px]:grid-cols-4">
 
-           {movies.map((val :MovieTicketData) => {
+           {  loading ? Array.from({length:5}).map(()=> homeLoader()): movies.map((val :MovieTicketData) => {
             return <SoonMovieCard key={val._id} value={val} />;
           })}
         </div>

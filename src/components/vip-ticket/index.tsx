@@ -1,11 +1,10 @@
-
 import premium from "../../img/premium.svg";
 import type { MovieTicketData } from "../../@types";
 import { useDispatch } from "react-redux";
 import { setChiptaModal } from "../../redux/modal-slice";
 
 interface MovieCardProps {
-  val: MovieTicketData;  // Prop sifatida obyektni olamiz
+  val: MovieTicketData;  
 }
 const VipTicket = ({val}:MovieCardProps) => {
 

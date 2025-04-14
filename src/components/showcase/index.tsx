@@ -54,20 +54,20 @@ const Showcase = () => {
         <div className="flex items-center gap-[30px] py-2  max-[420px]:overflow-x-scroll max-[420px]:gap-[15px]">
           <Link to={"/"}>
             <h5 className="font-normal text-xl max-[545px]:text-sm leading-[171%] text-center text-black">
-              Афиша
+            Главная страница
             </h5>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/seans"}>
             <h5 className="font-normal text-xl max-[545px]:text-sm leading-[171%] text-center text-black">
               Сеансы
             </h5>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/soonmovie"}>
             <h5 className="font-normal text-xl max-[545px]:text-sm leading-[171%] text-center text-black">
               Скоро в кино
             </h5>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/aboutcinema"}>
             <h5 className="font-normal text-xl max-[545px]:text-sm leading-[171%] text-center text-black">
               Кинотеатр
             </h5>

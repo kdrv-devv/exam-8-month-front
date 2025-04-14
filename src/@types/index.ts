@@ -18,3 +18,16 @@ export interface MovieTicketData {
     description: string;
     ticket_count?: number;
   }
+
+
+  export interface User {
+    _id: string;
+    name: string;
+    email: string;
+    password: string;
+    phonenumber: string;
+    role: "user" | "admin"; // Agar faqat shu ikkita rol bo'lsa
+  }
+
+
+  

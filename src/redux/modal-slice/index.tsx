@@ -23,8 +23,8 @@ const initialState: InitialStateType = {
 
 };
 const modalSlice = createSlice({
-  initialState,
   name: "Modal",
+  initialState,
   reducers: {
     setAuthorizationModalVisiblty(state, { payload }) {
       state.authorizationModalVisiblty = payload;

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import modalReducer from "./modal-slice"; // 🔥 To‘g‘ri import qilish
+import modalReducer from "./modal-slice"; 
 import verifyReducer from './verify-slice'
 
 export const store = configureStore({

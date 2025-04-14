@@ -3,19 +3,19 @@ import type { MovieTicketData } from "../../@types";
 import { useNavigate } from "react-router-dom";
 
 interface MovieCardProps {
-  value: MovieTicketData;  // Prop sifatida obyektni olamiz
+  value: MovieTicketData; 
 }
 const MovieCard = ({value}:MovieCardProps) => {
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/movie/${value._id}`); // ID bo‘yicha sahifaga o'tkazish
+    navigate(`/movie/${value._id}`); 
   };
 
 
   return (
-    <div className="flex flex-col w-full minl-[553px]  gap-[10px]">
+    <div className="flex flex-col w-full min-h-[553px]  gap-[10px]">
       <div onClick={handleClick}  className="card-top relative rounded-[16px] overflow-hidden cursor-pointer">
        
       <img
@@ -28,9 +28,11 @@ const MovieCard = ({value}:MovieCardProps) => {
         </button>
       </div>
 
-      <h3 className="font-medium text-2xl leading-[133%] text-black">
-        {value.title}
-      </h3>
+      <div className="font-medium text-2xl leading-[133%] text-black">
+        <p> {value.title}</p>
+        <span className="text-sm">qolgan chiptalar soni: {value.ticket_count}</span>
+        
+      </div>
 
       <div className="flex items-center flex-wrap gap-2">
         {

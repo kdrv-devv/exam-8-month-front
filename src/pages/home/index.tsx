@@ -9,12 +9,16 @@ import Footer from "../../components/footer";
 import Modals from "../../components/modals";
 import { MovieTicketData } from "../../@types";
 import TicketModal from "../../components/modals/ticket-modal";
+import useLoader from "../../generic/useLoader";
 
 const Home = () => {
+  let [loader , setLoader] = useState<Boolean>(true)
   let btn_style =
     " h-8 flex items-center justify-center rounded-xl font-normal text-sm leading-[143%] text-center ";
   const axios = useAxios()
+
   const [movies , setMovies] = useState([]) 
+
   useEffect(()=>{
     let token = localStorage.getItem("token")
 
@@ -25,11 +29,10 @@ const Home = () => {
         "Authorization": `Bearer ${token}`,
       }
 
-    }).then((data) => setMovies(data.data?.data))
-
-
+    }).then((data) => {setMovies(data.data?.data) , setLoader(false)})
   },[])
 
+  const {homeLoader} = useLoader()
 
   return (
     <div>
@@ -65,9 +68,15 @@ const Home = () => {
 
       <div className="container w-[90%] m-auto">
         <div className="grid gap-10 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {movies.map((val :MovieTicketData) => {
-            return <MovieCard key={val._id} value={val} />;
-          })}
+
+          {
+            loader ?  Array.from({length:8}).map((_) => homeLoader()) :  movies.map((val :MovieTicketData) => {
+              return <MovieCard key={val._id} value={val} />;
+            })
+          }
+
+
+          
         </div>
       </div>
 

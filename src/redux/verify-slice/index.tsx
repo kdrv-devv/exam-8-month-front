@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { User } from "../../@types";
 
 interface userBig{
     token:string
@@ -10,14 +11,6 @@ interface InitialStateType{
     userData?:userBig | null
 }
 
-interface User {
-    _id: string;
-    name: string;
-    email: string;
-    password: string;
-    phonenumber: string;
-    role: "user" | "admin"; // Agar faqat shu ikkita rol bo'lsa
-  }
 
 
 const initialState :InitialStateType ={
@@ -26,8 +19,8 @@ const initialState :InitialStateType ={
 }
 
 const verifySlice = createSlice({
-    initialState,
     name:"verify",
+    initialState,
     reducers:{
         setIsverify(state , {payload}){
             state.isverify = payload
