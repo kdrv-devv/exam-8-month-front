@@ -5,6 +5,7 @@ import Showcase from "../../components/showcase";
 import { useEffect, useState } from "react";
 import { useAxios } from "../../hooks/useAxios";
 import useLoader from "../../generic/useLoader";
+import Modals from "../../components/modals";
 const Dynamik = () => {
 
     const axios = useAxios()
@@ -89,6 +90,7 @@ const Dynamik = () => {
         </div>
         <Footer/>
       </section>
+      <Modals/>
     </div>
   );
 };

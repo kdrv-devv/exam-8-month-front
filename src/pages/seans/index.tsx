@@ -6,6 +6,7 @@ import SeansItem from "./seans-item";
 import { useAxios } from "../../hooks/useAxios";
 import useLoader from "../../generic/useLoader";
 import { MovieTicketData } from "../../@types";
+import Modals from "../../components/modals";
 
 const Seans = () => {
 
@@ -53,6 +54,7 @@ const Seans = () => {
       </main>
 
       <Footer />
+      <Modals/>
     </section>
   );
 };

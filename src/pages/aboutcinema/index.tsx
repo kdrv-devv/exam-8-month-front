@@ -1,4 +1,5 @@
 import Footer from "../../components/footer";
+import Modals from "../../components/modals";
 import Navbar from "../../components/navbar";
 import Showcase from "../../components/showcase";
 
@@ -81,6 +82,7 @@ const AboutCinema = () => {
       </main>
 
       <Footer />
+      <Modals/>
     </>
   );
 };
