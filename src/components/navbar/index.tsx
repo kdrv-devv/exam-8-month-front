@@ -18,9 +18,6 @@ const Navbar = () => {
   let link_style =
     "font-normal text-[24px] leading-[171%]h5 text-[#ffff] border-b w-full";
 
-  const btn = (width: number, height: number, radius: number): string => {
-    return `w-[${width}px] h-[${height}px] rounded-[${radius}px] bg-[#00bfa5]`;
-  };
 
   const isverify = useSelector((state: RootStore) => state.verifyReducer);
 
